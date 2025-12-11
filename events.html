@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SG Events | Book Tickets</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="public-body">
+  <div class="container">
+    <header class="public-header">
+      <h1>SG Events</h1>
+      <div id="userInfo"></div>
+      <button id="logoutBtn" style="display:none;" class="logout-btn">Logout</button>
+    </header>
+
+    <!-- Login / Signup -->
+    <div id="authSection" class="section">
+      <h2>Welcome! Please Login or Signup</h2>
+      <input id="email" placeholder="Email" type="email">
+      <input id="pass" placeholder="Password" type="password">
+      <button id="loginBtn" class="primary-btn">Login</button>
+      <button id="signupBtn" class="primary-btn">Signup</button>
+      <p id="authMsg"></p>
+    </div>
+
+    <!-- Events List -->
+    <div id="eventsSection" style="display:none;" class="section">
+      <h2>Available Events</h2>
+      <ul id="eventsList" class="event-list"></ul>
+    </div>
+
+    <!-- Seat Selection -->
+    <div id="seatSection" style="display:none;" class="section">
+      <h2 id="eventTitle"></h2>
+      <p id="eventDetails"></p>
+      <div id="seatMap" class="seat-map"></div>
+      <p>Selected Seats: <span id="selectedCount">0</span> | Total: <strong id="totalPrice">0 EGP</strong></p>
+      <button id="reserveBtn" class="primary-btn">Reserve & Pay via Instapay</button>
+    </div>
+
+    <!-- Payment -->
+    <div id="paymentSection" style="display:none;" class="section">
+      <h2>Complete Payment via Instapay</h2>
+      <p>Transfer exactly <strong id="payAmount"></strong> EGP to:</p>
+      <div class="instapay-info">
+        <p><strong>Your Instapay IPA / Username:</strong> <span id="adminIpa"></span></p>
+        <p><strong>Reference / Note:</strong> <span id="orderRef"></span> (Important! Include this)</p>
+      </div>
+      <p>Open Instapay app → Send Money → Enter details → Transfer</p>
+      <p>After transfer, wait for admin approval (you'll get email notification). Then refresh to see your QR tickets!</p>
+      <button onclick="location.reload()" class="primary-btn">I Paid - Refresh</button>
+    </div>
+
+    <!-- My Tickets -->
+    <div id="ticketsSection" style="display:none;" class="section">
+      <h2>My Tickets</h2>
+      <div id="myTickets"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="public-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SG Events | Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+  <script>
+    if (sessionStorage.getItem("sg_logged_in") !== "true") {
+      window.location.href = "index.html";
+    }
+    function logout() {
+      sessionStorage.removeItem("sg_logged_in");
+      window.location.href = "index.html";
+    }
+  </script>
+
+  <div class="dashboard-container">
+    <header class="dash-header">
+      <h1>SG Events Admin</h1>
+      <button onclick="logout()" class="logout-btn">Logout</button>
+    </header>
+
+    <div class="stats-bar">
+      <div class="stat-card">
+        <h3>Total Events</h3>
+        <p id="eventCount">0</p>
+      </div>
+      <div class="stat-card">
+        <h3>Tickets Sold</h3>
+        <p id="inviteCount">0</p>
+      </div>
+      <div class="stat-card">
+        <h3>Pending Approvals</h3>
+        <p>0</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Create New Event</h2>
+      <div class="form-grid">
+        <input id="eventName" placeholder="Event Name">
+        <input id="venue" placeholder="Venue">
+        <input id="date" type="date">
+        <input id="time" type="time">
+        <input id="price" type="number" placeholder="Ticket Price (EGP)">
+        <textarea id="description" placeholder="Full Event Description"></textarea>
+        <input id="dressCode" placeholder="Dress Code (optional)">
+        <button id="saveEvent" class="primary-btn">Create Event</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Your Events</h2>
+      <ul id="eventList" class="event-list"></ul>
+    </div>
+
+    <div class="section">
+      <h2>Admin Settings</h2>
+      <div class="form-grid">
+        <input type="password" id="newPass" placeholder="New Admin Password">
+        <button id="changePass" class="primary-btn">Change Password</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SG Events | Admin Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+  <div class="login-container">
+    <div class="login-card">
+      <div class="logo">SG Events</div>
+      <h1>Admin Portal</h1>
+      <p class="tagline">Secure access to manage events & tickets</p>
+      
+      <div class="input-group">
+        <input type="password" id="pass" placeholder="Enter Admin Password" autocomplete="off">
+      </div>
+      
+      <button id="go" class="primary-btn">Login Securely</button>
+      
+      <p id="err" class="error-msg">Incorrect password. Please try again.</p>
+    </div>
+  </div>
+
+  <script>
+    if (!localStorage.getItem("sg_admin_password")) {
+      localStorage.setItem("sg_admin_password", "sgadmin2828");
+    }
+
+    if (sessionStorage.getItem("sg_logged_in") === "true") {
+      window.location.href = "dashboard.html";
+    }
+
+    document.getElementById('go').addEventListener('click', () => {
+      const input = document.getElementById('pass').value;
+      const correct = localStorage.getItem("sg_admin_password");
+
+      if (input === correct) {
+        sessionStorage.setItem("sg_logged_in", "true");
+        window.location.href = "dashboard.html";
+      } else {
+        document.getElementById('err').style.opacity = '1';
+        setTimeout(() => document.getElementById('err').style.opacity = '0', 3000);
+      }
+    });
+
+    document.getElementById('pass').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') document.getElementById('go').click();
+    });
+  </script>
+</body>
+</html>
